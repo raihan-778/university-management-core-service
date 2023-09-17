@@ -1,15 +1,14 @@
-import { AcademicFaculty, Prisma } from '@prisma/client';
+import { AcademicDepartment, AcademicFaculty, Prisma } from '@prisma/client';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import prisma from '../../../shared/prisma';
-import { IAcademicFacultyFilterRequest } from './academicFaculty.interface';
 
 const insertIntoDB = async (
-  academicFacultyData: AcademicFaculty
-): Promise<AcademicFaculty> => {
-  const result = await prisma.academicFaculty.create({
-    data: academicFacultyData,
+  academicDepartmentData: AcademicDepartment
+): Promise<AcademicDepartment> => {
+  const result = await prisma.academicDepartment.create({
+    data: academicDepartmentData,
   });
   return result;
 };
@@ -72,7 +71,7 @@ const getAllFromDB = async (
   };
 };
 
-export const AcademicFacultyService = {
+export const AcademicDepartmentService = {
   insertIntoDB,
   getAllFromDB,
 };

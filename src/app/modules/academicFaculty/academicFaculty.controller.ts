@@ -6,14 +6,15 @@ import sendResponse from '../../../shared/sendResponse';
 import { AcademicFacultyService } from './academicFaculty.service';
 
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
-  const result = AcademicFacultyService.insertIntoDB(req.body);
+  const result = await AcademicFacultyService.insertIntoDB(req.body);
   sendResponse<AcademicFaculty>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Student Enrolled!!',
+    message: 'Academic Faculty Created!!',
     data: result,
   });
 });
+
 export const AcademicFacultyController = {
   insertIntoDB,
 };
