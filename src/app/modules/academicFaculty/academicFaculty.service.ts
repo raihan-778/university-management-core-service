@@ -3,6 +3,7 @@ import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import prisma from '../../../shared/prisma';
+import { academicFacultySearchableFields } from './academicFaculty.constant';
 import { IAcademicFacultyFilterRequest } from './academicFaculty.interface';
 
 const insertIntoDB = async (
@@ -27,12 +28,12 @@ const getAllFromDB = async (
 
   if (searchTerm) {
     andConditions.push({
-      OR: {
-        title: {
+      OR: academicFacultySearchableFields.map(field => ({
+        [field]: {
           contains: searchTerm,
           mode: 'insensitive',
         },
-      },
+      })),
     });
   }
   if (Object.keys(filterData).length > 0) {
@@ -48,7 +49,6 @@ const getAllFromDB = async (
     andConditions.length > 0 ? { AND: andConditions } : {};
   const result = await prisma.academicFaculty.findMany({
     where: whereConditions,
-    // where: andConditions,
     skip,
     take: limit,
     orderBy:
@@ -72,7 +72,17 @@ const getAllFromDB = async (
   };
 };
 
+const getDataById = async (id: string): Promise<AcademicFaculty | null> => {
+  const result = await prisma.academicFaculty.findUnique({
+    where: {
+      id,
+    },
+  });
+  return result;
+};
+
 export const AcademicFacultyService = {
   insertIntoDB,
   getAllFromDB,
+  getDataById,
 };

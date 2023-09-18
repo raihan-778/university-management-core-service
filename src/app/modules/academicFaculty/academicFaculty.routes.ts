@@ -4,6 +4,8 @@ import { AcademicFacultyController } from './academicFaculty.controller';
 import { AcademicFacultyValidation } from './academicFaculty.validation';
 
 const router = Router();
+router.get('/', AcademicFacultyController.getAllFromDB);
+router.get('/:id', AcademicFacultyController.getDataById);
 
 router.post(
   '/',
