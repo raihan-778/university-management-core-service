@@ -1,72 +1,72 @@
-import { Student } from '@prisma/client';
+import { Faculty } from '@prisma/client';
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import { paginationFields } from '../../../constants/pagination';
 import catchAsync from '../../../shared/catchAsync';
 import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
-import { StudentFilterableFields } from './student.constant';
-import { StudentService } from './student.service';
+import { facultyFilterableFields } from './faculty.constant';
+import { FacultyService } from './faculty.service';
 
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await StudentService.insertIntoDB(req.body);
-  sendResponse<Student>(res, {
+  const result = await FacultyService.insertIntoDB(req.body);
+  sendResponse<Faculty>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Student Enrolled!!',
+    message: 'Faculty Enrolled!!',
     data: result,
   });
 });
 
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
-  const filters = pick(req.query, StudentFilterableFields);
+  const filters = pick(req.query, facultyFilterableFields);
   const options = pick(req.query, paginationFields);
 
   // console.log('Filters:', filters);
   // console.log('Options:', options);
-  const result = await StudentService.getAllFromDB(filters, options);
-  sendResponse<Student[]>(res, {
+  const result = await FacultyService.getAllFromDB(filters, options);
+  sendResponse<Faculty[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Student data Fatched!!',
+    message: 'Faculty data Fatched!!',
     meta: result.meta,
     data: result.data,
   });
 });
 
 const getDataById = catchAsync(async (req: Request, res: Response) => {
-  const result = await StudentService.getDataById(req.params.id);
-  sendResponse<Student>(res, {
+  const result = await FacultyService.getDataById(req.params.id);
+  sendResponse<Faculty>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Student Single data Fatched!!',
+    message: 'Faculty Single data Fatched!!',
     data: result,
   });
 });
 const updateIntoDB = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
   const payload = req.body;
-  const result = await StudentService.updateIntoDB(id, payload);
-  sendResponse<Student>(res, {
+  const result = await FacultyService.updateIntoDB(id, payload);
+  sendResponse<Faculty>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Student Data Updated Successfully!!',
+    message: 'Faculty Data Updated Successfully!!',
     data: result,
   });
 });
 
 const deleteDataById = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await StudentService.deleteDataById(id);
-  sendResponse<Student>(res, {
+  const result = await FacultyService.deleteDataById(id);
+  sendResponse<Faculty>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Student Data Deleted Successfully!!',
+    message: 'Faculty Data Deleted Successfully!!',
     data: result,
   });
 });
 
-export const StudentController = {
+export const FacultyController = {
   insertIntoDB,
   getAllFromDB,
   getDataById,

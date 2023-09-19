@@ -1,5 +1,5 @@
-export const StudentSearchableFields: string[] = [
-  'studentId',
+export const FacultySearchableFields: string[] = [
+  'facultyId',
   'firstName',
   'middleName',
   'lastName',
@@ -7,10 +7,11 @@ export const StudentSearchableFields: string[] = [
   'contactNo',
   'gender',
   'bloodGroup',
+  'designation',
 ];
-export const StudentFilterableFields: string[] = [
+export const facultyFilterableFields: string[] = [
   'searchTerm',
-  'studentId',
+  'facultyId',
   'firstName',
   'middleName',
   'lastName',
@@ -18,4 +19,5 @@ export const StudentFilterableFields: string[] = [
   'contactNo',
   'gender',
   'bloodGroup',
+  'designation',
 ];
