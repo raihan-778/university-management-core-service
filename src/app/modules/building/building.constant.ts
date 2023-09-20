@@ -1,2 +1,2 @@
-export const BuildingFilterableFields = ['searchTerm'];
-export const BuildingSearchableFields = ['title'];
+export const buildingFilterableFields = ['searchTerm'];
+export const buildingSearchableFields = ['title'];

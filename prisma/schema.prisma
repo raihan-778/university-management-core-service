@@ -105,6 +105,8 @@ model Building {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   rooms     Room[]
+
+  @@map("buildings")
 }
 
 model Room {
@@ -115,4 +117,30 @@ model Room {
   updatedAt  DateTime @updatedAt
   building   Building @relation(fields: [buildingId], references: [id])
   buildingId String
+
+  @@map("rooms")
+}
+
+model Course {
+  id              String                 @id @default(uuid())
+  title           String
+  code            String
+  credits         Int                    @default(0)
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
+  prerequisits    CourseToPrerequisits[] @relation("coursesToPrerequisits") //here we seperate two relations using two different name using @relation 
+  prerequisitsFor CourseToPrerequisits[] @relation("prerequisitesForCourse")
+
+  @@map("courses")
+}
+
+model CourseToPrerequisits {
+  courseId        String
+  prerequisitesId String
+
+  course        Course @relation(fields: [courseId], references: [id], name: "coursesToPrerequisits") //name is used for seperate two Course relation with course & prerequisits
+  prerequisites Course @relation(fields: [prerequisitesId], references: [id], name: "prerequisitesForCourse")
+
+  @@id([courseId, prerequisitesId])
+  @@map("coursesToPrerequisits")
 }
