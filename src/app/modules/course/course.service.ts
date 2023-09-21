@@ -129,11 +129,12 @@ const updateIntoDB = async (
   id: string,
   payload: Partial<ICourseCreateData>
 ): Promise<Course> => {
+  const { preRequisiteCourses, ...courseData } = payload;
   const result = await prisma.course.update({
     where: {
       id,
     },
-    data: payload,
+    data: courseData,
   });
   return result;
 };
