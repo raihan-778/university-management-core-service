@@ -5,15 +5,24 @@ const create = z.object({
     title: z.string({
       required_error: 'Title is required',
     }),
-  }),
-});
-const update = z.object({
-  body: z.object({
-    title: z.string().optional(),
+    code: z.string({
+      required_error: 'Code is required',
+    }),
+    credits: z.number({
+      required_error: 'Credites is required',
+    }),
   }),
 });
 
-export const BuildingValidation = {
+const update = z.object({
+  body: z.object({
+    title: z.string().optional(),
+    code: z.string().optional(),
+    credits: z.number().optional(),
+  }),
+});
+
+export const CourseValidation = {
   create,
   update,
 };
