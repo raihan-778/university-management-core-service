@@ -44,8 +44,8 @@ const getDataById = catchAsync(async (req: Request, res: Response) => {
 });
 const updateIntoDB = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const payload = req.body;
-  const result = await CourseService.updateIntoDB(id, payload);
+
+  const result = await CourseService.updateIntoDB(id, req.body);
   sendResponse<Course>(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -64,6 +64,29 @@ const deleteDataById = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const assignFacultiesData = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  console.log(req.body.faculties);
+  const result = await CourseService.assignFaculties(id, req.body.faculties);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Faculties Assigned Successfully!!',
+    data: result,
+  });
+});
+
+const DeleteFacultiesData = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  console.log(req.body.faculties);
+  const result = await CourseService.DeleteFaculties(id, req.body.faculties);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Faculties Deleted Successfully!!',
+    data: result,
+  });
+});
 
 export const CourseController = {
   insertIntoDB,
@@ -71,4 +94,6 @@ export const CourseController = {
   getDataById,
   updateIntoDB,
   deleteDataById,
+  assignFacultiesData,
+  DeleteFacultiesData,
 };

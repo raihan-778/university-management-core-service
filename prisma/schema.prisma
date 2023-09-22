@@ -95,6 +95,7 @@ model Faculty {
 
   academicFaculty   AcademicFaculty @relation(fields: [academicFacultyId], references: [id])
   academicFacultyId String
+  faculties         CourseFaculty[]
 
   @@map("faculties")
 }
@@ -130,6 +131,7 @@ model Course {
   updatedAt       DateTime               @updatedAt
   prerequisits    CourseToPrerequisits[] @relation("coursesToPrerequisits") //here we seperate two relations using two different name using @relation 
   prerequisitsFor CourseToPrerequisits[] @relation("prerequisitesForCourse")
+  courses         CourseFaculty[]
 
   @@map("courses")
 }
@@ -143,4 +145,13 @@ model CourseToPrerequisits {
 
   @@id([courseId, prerequisitesId])
   @@map("coursesToPrerequisits")
+}
+
+model CourseFaculty {
+  courseId  String
+  course    Course  @relation(fields: [courseId], references: [id])
+  facultyId String
+  faculty   Faculty @relation(fields: [facultyId], references: [id])
+
+  @@id([courseId, facultyId])
 }
