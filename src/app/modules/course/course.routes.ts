@@ -36,14 +36,15 @@ router.delete(
 
 router.post(
   '/:id/assign-faculties',
+
   auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
-  // validateRequest(CourseValidation.create),
+  validateRequest(CourseValidation.addOrRemoveFaculties),
   CourseController.assignFacultiesData
 );
 router.delete(
   '/:id/delete-faculties',
   auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
-  // validateRequest(CourseValidation.create),
+  validateRequest(CourseValidation.addOrRemoveFaculties),
   CourseController.DeleteFacultiesData
 );
 

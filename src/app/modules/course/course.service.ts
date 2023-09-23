@@ -136,7 +136,7 @@ const getAllFromDB = async (
     data: result,
   };
 };
-
+//get data by Id route
 const getDataById = async (id: string): Promise<Course | null> => {
   const result = await prisma.course.findUnique({
     where: {
@@ -145,7 +145,7 @@ const getDataById = async (id: string): Promise<Course | null> => {
   });
   return result;
 };
-
+//update data by Id into DB Route
 const updateIntoDB = async (
   id: string,
   payload: Partial<ICourseCreateData>
@@ -229,7 +229,7 @@ const updateIntoDB = async (
   return responseData;
 };
 
-// return result;
+// delete data by ID Route
 
 const deleteDataById = async (id: string): Promise<Course> => {
   const result = await prisma.course.delete({
@@ -239,6 +239,8 @@ const deleteDataById = async (id: string): Promise<Course> => {
   });
   return result;
 };
+
+// assign Faculties into Course Route
 
 const assignFaculties = async (
   id: string,
@@ -261,6 +263,8 @@ const assignFaculties = async (
   });
   return assignFacultyData;
 };
+
+// Remove Faculties from Course Route
 
 const DeleteFaculties = async (
   id: string,

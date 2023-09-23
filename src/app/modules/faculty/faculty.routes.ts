@@ -27,4 +27,18 @@ router.post(
   FacultyController.insertIntoDB
 );
 
+router.post(
+  '/:id/assign-courses',
+  validateRequest(FacultyValidation.addOrRemoveCourses),
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  FacultyController.assignCoursesData
+);
+router.delete(
+  '/:id/delete-courses',
+  validateRequest(FacultyValidation.addOrRemoveCourses),
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
+  // validateRequest(CourseValidation.create),
+  FacultyController.DeleteCoursesData
+);
+
 export const FacultyRoutes = router;

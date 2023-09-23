@@ -18,7 +18,7 @@ const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
-
+//Get All Data Controller
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
   console.log(req.query);
   const filters = pick(req.query, CourseFilterableFields);
@@ -32,7 +32,7 @@ const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
     data: result.data,
   });
 });
-
+//get data by Id controller
 const getDataById = catchAsync(async (req: Request, res: Response) => {
   const result = await CourseService.getDataById(req.params.id);
   sendResponse<Course>(res, {
@@ -42,6 +42,8 @@ const getDataById = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
+//Update data by Id Controller
 const updateIntoDB = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
 
@@ -53,7 +55,7 @@ const updateIntoDB = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
-
+// Delete data by Id Controller
 const deleteDataById = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
   const result = await CourseService.deleteDataById(id);
@@ -64,6 +66,8 @@ const deleteDataById = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
+// Assign Faculties Controller.
 const assignFacultiesData = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
   console.log(req.body.faculties);
@@ -76,6 +80,7 @@ const assignFacultiesData = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+//Delete Faculties Controller
 const DeleteFacultiesData = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
   console.log(req.body.faculties);

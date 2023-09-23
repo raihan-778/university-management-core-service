@@ -21,8 +21,16 @@ const update = z.object({
     credits: z.number().optional(),
   }),
 });
+const addOrRemoveFaculties = z.object({
+  body: z.object({
+    courses: z.array(z.string(), {
+      required_error: 'Faculties are required',
+    }),
+  }),
+});
 
 export const CourseValidation = {
   create,
   update,
+  addOrRemoveFaculties,
 };
