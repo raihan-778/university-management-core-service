@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 const create = z.object({
   body: z.object({
-    facultyId: z.string({ required_error: 'Student Id is required' }),
+    facultyId: z.string({ required_error: 'Faculty Id is required' }),
     firstName: z.string({ required_error: 'First Name is required' }),
     middleName: z.string().optional(),
     lastName: z.string({ required_error: 'Last Name is required' }),

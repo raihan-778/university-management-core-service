@@ -5,12 +5,12 @@ import {
 } from '@prisma/client';
 import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
-import prisma from '../../../shared/prisma';
-import { ISemesterRegistrationFilterRequest } from './semesterRegistration.interface';
-import { IPaginationOptions } from '../../../interfaces/pagination';
-import { IGenericResponse } from '../../../interfaces/common';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
+import { IGenericResponse } from '../../../interfaces/common';
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import prisma from '../../../shared/prisma';
 import { SemesterRegistrationSearchableFields } from './semesterRegistration.constant';
+import { ISemesterRegistrationFilterRequest } from './semesterRegistration.interface';
 
 const insertIntoDB = async (
   data: SemesterRegistration
@@ -99,6 +99,43 @@ const getAllFromDB = async (
     data: result,
   };
 };
+
+const getDataById = async (
+  id: string
+): Promise<SemesterRegistration | null> => {
+  const result = await prisma.semesterRegistration.findUnique({
+    where: {
+      id,
+    },
+  });
+  return result;
+};
+
+const updateIntoDB = async (
+  id: string,
+  payload: Partial<SemesterRegistration>
+): Promise<SemesterRegistration> => {
+  const result = await prisma.semesterRegistration.update({
+    where: {
+      id,
+    },
+    data: payload,
+  });
+  return result;
+};
+
+const deleteDataById = async (id: string): Promise<SemesterRegistration> => {
+  const result = await prisma.semesterRegistration.delete({
+    where: {
+      id,
+    },
+  });
+  return result;
+};
 export const SemesterRegistrationService = {
   insertIntoDB,
+  getAllFromDB,
+  getDataById,
+  updateIntoDB,
+  deleteDataById,
 };
