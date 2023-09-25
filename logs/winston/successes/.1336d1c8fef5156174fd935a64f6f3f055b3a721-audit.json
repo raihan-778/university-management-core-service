@@ -114,6 +114,61 @@
             "date": 1695459799238,
             "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-23-09-15-success.log",
             "hash": "2e636e18e380fc720b9899a4882e2511ee3ee2f4b56543c0b101fae9c655a322"
+        },
+        {
+            "date": 1695541431110,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-24-09-13-success.log",
+            "hash": "dca7ad4ca422b88834bfc804ebe4b19010798bf79a5122f4b54cc426f14e9a66"
+        },
+        {
+            "date": 1695542637221,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-24-09-14-success.log",
+            "hash": "87b757ea4864d9c415a7c9d4b8b0cf7af76cb35d46bcbc9e310a340d282d7648"
+        },
+        {
+            "date": 1695546089384,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-24-09-15-success.log",
+            "hash": "6c64e98d4107b41e03abd0a14fcb8161734e857f42fad016930041025f1ddf02"
+        },
+        {
+            "date": 1695622657543,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-25-09-12-success.log",
+            "hash": "ab4ffe833ac47c72212db6015b47f4d0f9514412e7041a5df08a26ae01fd28be"
+        },
+        {
+            "date": 1695630018345,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-25-09-14-success.log",
+            "hash": "b700c5ce95d8e568363596d43de940147eed7b77cb8b8d4ff420fc8611ac2598"
+        },
+        {
+            "date": 1695632712172,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-25-09-15-success.log",
+            "hash": "1dc9a53e5cb356e405f5cb7d65d5cac72257b0c99a6c5a496398bf50f7ae14a7"
+        },
+        {
+            "date": 1695641163314,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-25-09-17-success.log",
+            "hash": "badb7fa30a034b7d4d64e72027a5021177561a610168bce2dc55d758a4b670dc"
+        },
+        {
+            "date": 1695656588782,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-25-09-21-success.log",
+            "hash": "7fecb7cb9af1a5cff0ece4ff9cef921bdf0761cf8b29fe25aecb8d613b9e6872"
+        },
+        {
+            "date": 1695658244109,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-25-09-22-success.log",
+            "hash": "05ad7fd10e77fa25a83f7a65685f69af2b32f23d474dce76185006bfe1e00af2"
+        },
+        {
+            "date": 1695661281233,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-25-09-23-success.log",
+            "hash": "b1e05855b4c8b72795e2ec65fb5beec9952913ddce1bfa8b065771ada6e64a78"
+        },
+        {
+            "date": 1695664893890,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\successes\\phu-2023-26-09-00-success.log",
+            "hash": "c18e16803dbea25b4d463f43a83b0413d4d741e275ab77f87386e5808a285911"
         }
     ],
     "hashType": "sha256"

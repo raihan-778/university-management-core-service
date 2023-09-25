@@ -48,9 +48,9 @@ const getDataById = catchAsync(async (req: Request, res: Response) => {
 });
 const updateIntoDB = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const payload = req.body;
-  const result = await SemesterRegistrationService.updateIntoDB(id, payload);
-  sendResponse<SemesterRegistration>(res, {
+
+  const result = await SemesterRegistrationService.updateIntoDB(id, req.body);
+  sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Semester Registration Data Updated Successfully!!',
@@ -74,6 +74,5 @@ export const SemesterRegistrationController = {
   getAllFromDB,
   getDataById,
   updateIntoDB,
-
   deleteDataById,
 };
