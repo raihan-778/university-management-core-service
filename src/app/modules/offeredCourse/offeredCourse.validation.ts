@@ -16,6 +16,18 @@ const create = z.object({
     ),
   }),
 });
-export const OfferedCourseValidation={
-    create
-}
+const update = z.object({
+  body: z.object({
+    academicDepartmentId: z.string().optional(),
+    semesterRegistrationId: z.string().optional(),
+    courseIds: z.optional(
+      z.array(z.string(), {
+        required_error: 'Course Ids are Required',
+      })
+    ),
+  }),
+});
+export const OfferedCourseValidation = {
+  create,
+  update,
+};

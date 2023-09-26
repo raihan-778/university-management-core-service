@@ -3,3 +3,6 @@ export type IOfferedCourseType = {
   academicDepartmentId: string;
   semesterRegistrationId: string;
 };
+export type IOfferedCourseFilterRequest = {
+  searchTerm?: string;
+};
