@@ -1,0 +1,23 @@
+Tue Sep 26 2023 21:8:12 } [PH] error: 
+Invalid `prisma.offeredCourseClassSchedule.create()` invocation:
+
+{
+  data: {
+    startTime: "9:00AM",
+    endTime: "11:00AM",
+    dayOfWeek: "SATURDAY, MONDAY,WEDNESDAY",
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    offeredCourseSectionId: "ccd93f39-1d64-4db0-9f81-f1014576c937",
+    semesterRegistrationId: "aed1a53f-c14b-45d0-b0da-278ab1a52f09",
+    facultyId: "c79dd8a9-87b0-43b2-8c52-e5afaafba0c9",
+    roomId: "eb18010b-ab40-4d07-be99-95759d0b129f"
+  },
+  include: {
+    offeredCourseSection: true,
+    semesterRegistration: true,
+    faculty: true,
+    room: true
+  }
+}
+
+Invalid value for argument `dayOfWeek`. Expected WeekDays.

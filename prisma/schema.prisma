@@ -71,8 +71,9 @@ model Student {
   academicFaculty   AcademicFaculty @relation(fields: [academicFacultyId], references: [id])
   academicFacultyId String
 
-  academicDepartment   AcademicDepartment @relation(fields: [academicDepartmentId], references: [id])
-  academicDepartmentId String
+  academicDepartment           AcademicDepartment            @relation(fields: [academicDepartmentId], references: [id])
+  academicDepartmentId         String
+  studentsSemesterRegistration StudentSemesterRegistration[]
 
   @@map("student")
 }
@@ -114,14 +115,14 @@ model Building {
 }
 
 model Room {
-  id                         String                       @id @default(uuid())
-  roomNumber                 String
-  floor                      String
-  createdAt                  DateTime                     @default(now())
-  updatedAt                  DateTime                     @updatedAt
-  building                   Building                     @relation(fields: [buildingId], references: [id])
-  buildingId                 String
-  OfferedCourseClassSchedule OfferedCourseClassSchedule[]
+  id                          String                       @id @default(uuid())
+  roomNumber                  String
+  floor                       String
+  createdAt                   DateTime                     @default(now())
+  updatedAt                   DateTime                     @updatedAt
+  building                    Building                     @relation(fields: [buildingId], references: [id])
+  buildingId                  String
+  offeredCourseClassSchedules OfferedCourseClassSchedule[]
 
   @@map("rooms")
 }
@@ -162,19 +163,20 @@ model CourseFaculty {
 }
 
 model SemesterRegistration {
-  id                          String                       @id @default(uuid())
-  startDate                   DateTime
-  endDate                     DateTime
-  status                      SemesterRegistrationStatus   @default(UpComing)
-  minCredit                   Int
-  maxCredit                   Int
-  createdAt                   DateTime                     @default(now())
-  updatedAt                   DateTime                     @updatedAt
-  academicSemesterId          String
-  academicSemester            AcademicSemester             @relation(fields: [academicSemesterId], references: [id])
-  offeredCourses              OfferedCourse[]
-  offeredCourseSection        OfferedCourseSection[]
-  offeredCourseClassSchedules OfferedCourseClassSchedule[]
+  id                           String                        @id @default(uuid())
+  startDate                    DateTime
+  endDate                      DateTime
+  status                       SemesterRegistrationStatus    @default(UpComing)
+  minCredit                    Int
+  maxCredit                    Int
+  createdAt                    DateTime                      @default(now())
+  updatedAt                    DateTime                      @updatedAt
+  academicSemesterId           String
+  academicSemester             AcademicSemester              @relation(fields: [academicSemesterId], references: [id])
+  offeredCourses               OfferedCourse[]
+  offeredCourseSection         OfferedCourseSection[]
+  offeredCourseClassSchedules  OfferedCourseClassSchedule[]
+  studentsSemesterRegistration StudentSemesterRegistration[]
 
   @@map("semester_registrations")
 }
@@ -229,6 +231,21 @@ model OfferedCourseClassSchedule {
   room   Room   @relation(fields: [roomId], references: [id])
 
   @@map("offered_course_class_schedule")
+}
+
+model StudentSemesterRegistration {
+  id                String   @id @default(uuid())
+  isConfirmed       Boolean? @default(false)
+  totalCreditsTaken Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  studentId         String
+  student           Student  @relation(fields: [studentId], references: [id])
+
+  semesterRegistrationId String
+  semesterRegistration   SemesterRegistration @relation(fields: [semesterRegistrationId], references: [id])
+
+  @@map("student_semester_registrations")
 }
 
 enum WeekDays {

@@ -136,5 +136,5 @@ export const OfferedCourseSectionService = {
   getAllFromDB,
   getDataById,
   updateIntoDB,
-  deleteDataById
+  deleteDataById,
 };
