@@ -8,7 +8,7 @@ const create = z.object({
     floor: z.string({
       required_error: 'floor is required',
     }),
-    buildingId: z.number({
+    buildingId: z.string({
       required_error: 'buildingId is required',
     }),
   }),

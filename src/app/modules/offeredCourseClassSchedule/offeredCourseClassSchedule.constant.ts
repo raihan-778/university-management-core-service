@@ -1,6 +1,11 @@
 export const OfferedCoursClassScheduleFilterableFields = [
   'searchTerm',
   'dayOfWeek',
+  'offeredCourseSectionId',
+
+  'semesterRegistrationId',
+  'facultyId',
+  'roomId',
 ];
 
 export const OfferedCourseClassScheduleSearchableFields = ['dayOfWeek'];

@@ -8,12 +8,9 @@ const create = z.object({
     semesterRegistrationId: z.string({
       required_error: 'semesterRegistrationId is required',
     }),
-    courseIds: z.array(
-      z.string({ required_error: 'Course Id isFiniteError' }),
-      {
-        required_error: 'Course Ids are Required',
-      }
-    ),
+    courseIds: z.array(z.string({ required_error: 'Course Id is Required' }), {
+      required_error: 'Course Ids are Required',
+    }),
   }),
 });
 const update = z.object({
