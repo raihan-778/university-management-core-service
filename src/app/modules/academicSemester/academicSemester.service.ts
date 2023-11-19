@@ -81,6 +81,8 @@ const getDataById =async (id: string): Promise<AcademicSemester|null> => {
   return result
 };
 
+
+
 export const AcademicSemesterService = {
   insertIntoDB,
   getAllFromDB,
