@@ -1,0 +1,25 @@
+Tue Nov 28 2023 22:53:56 } [PH] error: 
+Invalid `prisma.studentSemesterPayment.create()` invocation:
+
+
+Operation 'createOne' for model 'StudentSemesterPayment' does not match any query.
+Tue Nov 28 2023 22:55:30 } [PH] error: 
+Invalid `prisma.studentSemesterRegistrationsCourse.findMany()` invocation:
+
+
+Transaction API error: Transaction already closed: Could not perform operation.
+Tue Nov 28 2023 22:56:24 } [PH] error: 
+Invalid `prisma.studentEnrolledCourse.findFirst()` invocation:
+
+
+Transaction API error: Transaction already closed: A query cannot be executed on a committed transaction.
+Tue Nov 28 2023 22:57:40 } [PH] error: 
+Invalid `prisma.studentSemesterRegistrationsCourse.findMany()` invocation:
+
+
+Transaction API error: Transaction already closed: Could not perform operation.
+Tue Nov 28 2023 22:58:40 } [PH] error: 
+Invalid `prisma.studentEnrolledCourse.findFirst()` invocation:
+
+
+The column `student_enrolled_courses.poing` does not exist in the current database.

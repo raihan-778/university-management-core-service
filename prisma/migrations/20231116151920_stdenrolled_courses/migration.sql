@@ -10,7 +10,7 @@ CREATE TABLE "StudentEnrolledCourse" (
     "courseId" TEXT NOT NULL,
     "academicSemesterId" TEXT NOT NULL,
     "grade" TEXT NOT NULL,
-    "poing" DOUBLE PRECISION DEFAULT 0,
+    "point" DOUBLE PRECISION DEFAULT 0,
     "totalMarks" INTEGER DEFAULT 0,
     "status" "StudentEnrolledCourseStatus" NOT NULL DEFAULT 'ONGOING',
 

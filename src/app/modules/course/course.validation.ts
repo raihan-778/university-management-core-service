@@ -11,6 +11,9 @@ const create = z.object({
     credits: z.number({
       required_error: 'Credites is required',
     }),
+    credits: z.number({
+      required_error: 'Credites is required',
+    }),
   }),
 });
 
@@ -23,7 +26,7 @@ const update = z.object({
 });
 const addOrRemoveFaculties = z.object({
   body: z.object({
-    courses: z.array(z.string(), {
+    faculties: z.array(z.string(), {
       required_error: 'Faculties are required',
     }),
   }),

@@ -1,0 +1,25 @@
+Tue Nov 28 2023 21:16:29 } [PH] error: 
+Invalid `prisma.studentSemesterPayment.create()` invocation:
+
+
+Operation 'createOne' for model 'StudentSemesterPayment' does not match any query.
+Tue Nov 28 2023 21:21:12 } [PH] error: 
+Invalid `prisma.studentSemesterRegistrationsCourse.findMany()` invocation:
+
+
+Transaction API error: Transaction already closed: Could not perform operation.
+Tue Nov 28 2023 21:23:49 } [PH] error: 
+Invalid `prisma.studentSemesterPayment.create()` invocation:
+
+
+Operation 'createOne' for model 'StudentSemesterPayment' does not match any query.
+Tue Nov 28 2023 21:24:35 } [PH] error: 
+Invalid `prisma.studentSemesterPayment.create()` invocation:
+
+
+Operation 'createOne' for model 'StudentSemesterPayment' does not match any query.
+Tue Nov 28 2023 21:27:10 } [PH] error: 
+Invalid `prisma.studentSemesterPayment.create()` invocation:
+
+
+Operation 'createOne' for model 'StudentSemesterPayment' does not match any query.

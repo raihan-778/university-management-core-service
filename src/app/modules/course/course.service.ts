@@ -113,6 +113,12 @@ const getAllFromDB = async (
           course: true,
         },
       },
+      courses: {
+        include: {
+          course: true,
+          faculty: true,
+        },
+      },
     },
     skip,
     take: limit,

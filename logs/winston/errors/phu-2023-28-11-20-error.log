@@ -1,0 +1,5 @@
+Tue Nov 28 2023 20:42:6 } [PH] error: 
+Invalid `prisma.studentEnrolledCourse.findFirst()` invocation:
+
+
+The column `student_enrolled_courses.poing` does not exist in the current database.
