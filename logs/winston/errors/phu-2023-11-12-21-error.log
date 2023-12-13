@@ -8,3 +8,8 @@ Invalid `prisma.studentSemesterPayment.create()` invocation:
 
 
 Transaction API error: Transaction already closed: Could not perform operation.
+Mon Dec 11 2023 21:43:8 } [PH] error: 
+Invalid `prisma.studentSemesterPayment.create()` invocation:
+
+
+Transaction API error: Transaction already closed: Could not perform operation.

@@ -15,18 +15,30 @@ const createSemesterPayment = async (
     totalPaymentAmount: number;
   }
 ) => {
-  const dataToInsert = {
-    studentId: payload.studentId,
-    academicSemesterId: payload.academicSemesterId,
-    fullPaymentAmount: payload.totalPaymentAmount,
-    partialPaymentAmount: payload.totalPaymentAmount,
-    totalDueAmount: payload.totalPaymentAmount,
-    totalPaidAmount: 0,
-  };
-
-  await prismaClient.studentSemesterPayment.create({
-    data: dataToInsert,
+  const isExist = await prismaClient.studentSemesterPayment.findFirst({
+    where: {
+      student: {
+        id: payload.studentId,
+      },
+      academicSemester: {
+        id: payload.academicSemesterId,
+      },
+    },
   });
+
+  if (!isExist) {
+    const dataToInsert = {
+      studentId: payload.studentId,
+      academicSemesterId: payload.academicSemesterId,
+      fullPaymentAmount: payload.totalPaymentAmount,
+      partialPaymentAmount: payload.totalPaymentAmount * 0.5,
+      totalDueAmount: 0,
+      totalPaidAmount: 0,
+    };
+    await prismaClient.studentSemesterPayment.create({
+      data: dataToInsert,
+    });
+  }
 };
 
 export const StudentSemesterPaymentService = {
