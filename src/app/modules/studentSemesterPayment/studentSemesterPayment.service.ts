@@ -32,7 +32,7 @@ const createSemesterPayment = async (
       academicSemesterId: payload.academicSemesterId,
       fullPaymentAmount: payload.totalPaymentAmount,
       partialPaymentAmount: payload.totalPaymentAmount * 0.5,
-      totalDueAmount: 0,
+      totalDueAmount: payload.totalPaymentAmount,
       totalPaidAmount: 0,
     };
     await prismaClient.studentSemesterPayment.create({

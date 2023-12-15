@@ -15,48 +15,83 @@ const studentEnrolledDefaultCoursMark = async (
     academicSemesterId: string;
   }
 ) => {
-  console.log('Student Default Cours Mark', payload);
+  const isExistMidtermData =
+    await prismaClient.studentEnrolledCourseMark.findFirst({
+      where: {
+        examType: ExamType.MIDTERM,
+        student: {
+          id: payload.studentId,
+        },
+        studentEnrolledCourse: {
+          id: payload.studentEnrolledCourseId,
+        },
+        academicSemester: {
+          id: payload.academicSemesterId,
+        },
+      },
+    });
 
-  await prismaClient.studentEnrolledCourseMark.create({
-    data: {
-      student: {
-        connect: {
+  if (!isExistMidtermData) {
+    await prismaClient.studentEnrolledCourseMark.create({
+      data: {
+        examType: ExamType.MIDTERM,
+        student: {
+          connect: {
+            id: payload.studentId,
+          },
+        },
+        studentEnrolledCourse: {
+          connect: {
+            id: payload.studentEnrolledCourseId,
+          },
+        },
+        academicSemester: {
+          connect: {
+            id: payload.academicSemesterId,
+          },
+        },
+      },
+    });
+  }
+
+  const isExistFinalData =
+    await prismaClient.studentEnrolledCourseMark.findFirst({
+      where: {
+        examType: ExamType.FINAL,
+        student: {
           id: payload.studentId,
         },
-      },
-      studentEnrolledCourse: {
-        connect: {
+        studentEnrolledCourse: {
           id: payload.studentEnrolledCourseId,
         },
-      },
-      academicSemester: {
-        connect: {
+        academicSemester: {
           id: payload.academicSemesterId,
         },
       },
-      examType: ExamType.MIDTERM,
-    },
-  });
-  await prismaClient.studentEnrolledCourseMark.create({
-    data: {
-      student: {
-        connect: {
-          id: payload.studentId,
+    });
+
+  if (!isExistFinalData) {
+    await prismaClient.studentEnrolledCourseMark.create({
+      data: {
+        examType: ExamType.FINAL,
+        student: {
+          connect: {
+            id: payload.studentId,
+          },
+        },
+        studentEnrolledCourse: {
+          connect: {
+            id: payload.studentEnrolledCourseId,
+          },
+        },
+        academicSemester: {
+          connect: {
+            id: payload.academicSemesterId,
+          },
         },
       },
-      studentEnrolledCourse: {
-        connect: {
-          id: payload.studentEnrolledCourseId,
-        },
-      },
-      academicSemester: {
-        connect: {
-          id: payload.academicSemesterId,
-        },
-      },
-      examType: ExamType.FINAL,
-    },
-  });
+    });
+  }
 };
 
 export const StudentEnrolledCourseMarkService = {
