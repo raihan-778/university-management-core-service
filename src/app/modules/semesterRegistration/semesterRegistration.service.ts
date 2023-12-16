@@ -440,6 +440,7 @@ const startNewSemester = async (id: string): Promise<{ message: string }> => {
               },
             },
           });
+
         console.log(studentSemesterRegistrationCourses);
         asyncForEach(
           studentSemesterRegistrationCourses,
@@ -465,12 +466,13 @@ const startNewSemester = async (id: string): Promise<{ message: string }> => {
                 courseId: item.offeredCourse.courseId,
                 academicSemesterId: semesterRegistration.academicSemesterId,
               };
+
               const studentEnrolledCourseData =
                 await prisma.studentEnrolledCourse.create({
                   data: enrolledCourseData,
                 });
-
-              await StudentEnrolledCourseMarkService.studentEnrolledDefaultCoursMark(
+              console.log('student course mark');
+              await StudentEnrolledCourseMarkService.createStudentEnrolledDefaultCoursMark(
                 prisma,
                 {
                   studentId: item.studentId,

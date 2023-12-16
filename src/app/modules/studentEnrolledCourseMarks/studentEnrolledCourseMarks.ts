@@ -4,7 +4,7 @@ import {
   PrismaClientOptions,
 } from '@prisma/client/runtime/library';
 
-const studentEnrolledDefaultCoursMark = async (
+const createStudentEnrolledDefaultCoursMark = async (
   prismaClient: Omit<
     PrismaClient<PrismaClientOptions, never, DefaultArgs>,
     '$connect' | '$disconnect' | '$on' | '$transaction' | '$use' | '$extends'
@@ -93,7 +93,10 @@ const studentEnrolledDefaultCoursMark = async (
     });
   }
 };
-
+const updateStudentMarks = async (payload: any) => {
+  console.log('updateCourseMark');
+};
 export const StudentEnrolledCourseMarkService = {
-  studentEnrolledDefaultCoursMark,
+  createStudentEnrolledDefaultCoursMark,
+  updateStudentMarks,
 };
