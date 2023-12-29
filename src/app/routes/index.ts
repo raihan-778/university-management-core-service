@@ -66,7 +66,7 @@ const moduleRoutes = [
     routes: OfferedCourseClassScheduleRoutes,
   },
   {
-    path: '/student-course-mark',
+    path: '/student-enrolled-course-marks',
     routes: StudentEnrolledCourseMarkeRoutes,
   },
 ];
