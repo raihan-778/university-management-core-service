@@ -14,7 +14,7 @@ import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import prisma from '../../../shared/prisma';
 import { asyncForEach } from '../../../shared/utils';
-import { StudentEnrolledCourseMarkService } from '../studentEnrolledCourseMarks/studentEnrolledCourseMarks';
+import { StudentEnrolledCourseMarkService } from '../studentEnrolledCourseMarks/studentEnrolledCourseMarks.service';
 import { StudentSemesterPaymentService } from '../studentSemesterPayment/studentSemesterPayment.service';
 import { StudentSemesterRegistrationCourse } from './../studentSemesterRegistrationCourses/studentSemesterRegistrationCourse.service';
 import { SemesterRegistrationSearchableFields } from './semesterRegistration.constant';
