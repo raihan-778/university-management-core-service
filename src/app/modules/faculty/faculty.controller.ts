@@ -92,8 +92,23 @@ const DeleteCoursesData = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const myCourses = catchAsync(async (req: Request, res: Response) => {
+  const filter = pick(req.query, ['academicSemesterId', 'courseId']);
+  const user = (req as any).user;
+  console.log(user);
+
+  const result = await FacultyService.myCourses(user.userId, filter);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Faculty Course Data retrived Successfully!!',
+    data: result,
+  });
+});
+
 export const FacultyController = {
   insertIntoDB,
+  myCourses,
   getAllFromDB,
   getDataById,
   updateIntoDB,

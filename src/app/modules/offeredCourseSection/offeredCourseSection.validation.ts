@@ -14,9 +14,6 @@ const create = z.object({
     offeredCourseId: z.string({
       required_error: 'Offered Course is required',
     }),
-    semesterRegistrationId: z.string({
-      required_error: 'semesterRegistrationId is required',
-    }),
   }),
 });
 const update = z.object({

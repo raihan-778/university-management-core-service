@@ -61,6 +61,7 @@ const getAllFromDB = async (
     include: {
       academicFaculty: true,
       academicDepartment: true,
+      offeredCourseClassSchedules: true,
     },
   });
   const total = await prisma.student.count();
@@ -163,7 +164,38 @@ const DeleteCourses = async (
   return assignCourseData;
 };
 
+const myCourses = async (
+  authUser: {
+    userId: string;
+    role: string;
+  },
+  filter: {
+    academicSemesterId?: string | null | undefined;
+    courseId?: string | null | undefined;
+  }
+) => {
+  if (!filter.academicSemesterId) {
+    const currentSemester = await prisma.academicSemester.findFirst({
+      where: {
+        isCurrent: true,
+      },
+    });
+    filter.academicSemesterId = currentSemester?.id;
+  }
+  const offeredCourseSections = await prisma.offeredCourseSection.findMany({
+    where: {
+      offeredCourseClassSchedules: {
+        some: {
+          //here "some" used because here offeredCourseClassSchedules is an array whish have many classes with different faculties.that means here if we want to find a single faculty classes then he may have some classes & some will be conducted by others so that we will use "some" keyword for finding any specific faculty classes.
+        },
+      },
+    },
+  });
+  console.log('user', authUser, filter.academicSemesterId);
+};
+
 export const FacultyService = {
+  myCourses,
   insertIntoDB,
   getAllFromDB,
   getDataById,

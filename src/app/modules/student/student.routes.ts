@@ -8,6 +8,11 @@ import { StudentValidation } from './student.validation';
 const router = Router();
 
 router.get('/', StudentController.getAllFromDB);
+router.get(
+  '/my-courses',
+  auth(ENUM_USER_ROLE.STUDENT),
+  StudentController.myCourses
+);
 router.get('/:id', StudentController.getDataById);
 router.delete(
   '/:id',
