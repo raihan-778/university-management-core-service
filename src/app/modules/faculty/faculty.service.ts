@@ -186,12 +186,68 @@ const myCourses = async (
     where: {
       offeredCourseClassSchedules: {
         some: {
-          //here "some" used because here offeredCourseClassSchedules is an array whish have many classes with different faculties.that means here if we want to find a single faculty classes then he may have some classes & some will be conducted by others so that we will use "some" keyword for finding any specific faculty classes.
+          faculty: {
+            facultyId: authUser.userId,
+          },
+        },
+      },
+      offeredCourse: {
+        semesterRegistration: {
+          academicSemester: {
+            id: filter.academicSemesterId,
+          },
+        },
+      },
+    },
+    include: {
+      offeredCourse: {
+        include: {
+          course: true,
+        },
+      },
+      offeredCourseClassSchedules: {
+        include: {
+          room: {
+            include: {
+              building: true,
+            },
+          },
         },
       },
     },
   });
-  console.log('user', authUser, filter.academicSemesterId);
+
+  const courseAndSchedules = offeredCourseSections.reduce(
+    (acc: any, obj: any) => {
+      const course = obj.offeredCourse.course;
+      const classSchedules = obj.offeredCourseClassSchedules;
+      console.log('class-Schedule:', classSchedules);
+
+      const existingCourse = acc.find(
+        (item: any) => item.course?.id === course?.id
+      );
+      console.log('existingCourse:', existingCourse);
+      if (existingCourse) {
+        acc.sections?.push({
+          section: obj,
+          classSchedules,
+        });
+      } else {
+        acc?.push({
+          course,
+          setions: {
+            section: obj,
+            classSchedules,
+          },
+        });
+      }
+      console.log('ACC', acc);
+      return acc;
+    },
+    []
+  );
+
+  return courseAndSchedules;
 };
 
 export const FacultyService = {
