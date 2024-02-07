@@ -11,9 +11,6 @@ const create = z.object({
     credits: z.number({
       required_error: 'Credites is required',
     }),
-    credits: z.number({
-      required_error: 'Credites is required',
-    }),
   }),
 });
 
