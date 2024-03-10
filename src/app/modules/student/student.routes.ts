@@ -13,6 +13,16 @@ router.get(
   auth(ENUM_USER_ROLE.STUDENT),
   StudentController.myCourses
 );
+router.get(
+  '/my-courses-schedule',
+  auth(ENUM_USER_ROLE.STUDENT),
+  StudentController.getMyCourseSchedule
+);
+router.get(
+  '/my-academic-info',
+  auth(ENUM_USER_ROLE.STUDENT),
+  StudentController.getMyAcademicInfo
+);
 router.get('/:id', StudentController.getDataById);
 router.delete(
   '/:id',
