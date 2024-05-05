@@ -105,6 +105,29 @@ const myCourses = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const myCoursesStudents = catchAsync(async (req: Request, res: Response) => {
+  const filter = pick(req.query, [
+    'academicSemesterId',
+    'courseId',
+    'offeredCourseSectionId',
+  ]);
+
+  const user = (req as any).user;
+  const options = pick(req.query, ['limit', 'page']);
+  console.log(user);
+
+  const result = await FacultyService.myCourseStudents(
+    user.userId,
+    filter,
+    options
+  );
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Faculty Course Data retrived Successfully!!',
+    data: result,
+  });
+});
 
 export const FacultyController = {
   insertIntoDB,
@@ -115,4 +138,5 @@ export const FacultyController = {
   deleteDataById,
   assignCoursesData,
   DeleteCoursesData,
+  myCoursesStudents,
 };

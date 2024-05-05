@@ -14,6 +14,11 @@ router.get(
   StudentController.myCourses
 );
 router.get(
+  '/my-marks',
+  auth(ENUM_USER_ROLE.STUDENT),
+  StudentController.getMyCourseMarks
+);
+router.get(
   '/my-courses-schedule',
   auth(ENUM_USER_ROLE.STUDENT),
   StudentController.getMyCourseSchedule

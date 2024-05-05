@@ -245,7 +245,38 @@ const getMyAcademicInfo = async (authUserId: string): Promise<any> => {
     courses: groupByAcademicSemesterData,
   };
 };
+const getMyCourseMarks = async (
+  authUserId: string,
+  filter: {
+    courseId?: string;
+    academicSemesterId?: string;
+  }
+): Promise<any> => {
+  if (!filter.academicSemesterId) {
+    const currentSemester = await prisma.academicSemester.findFirst({
+      where: {
+        isCurrent: true,
+      },
+    });
+    filter.academicSemesterId = currentSemester?.id;
+  }
 
+  const result = await prisma.studentEnrolledCourseMark.findMany({
+    where: {
+      student: {
+        studentId: authUserId,
+      },
+      studentEnrolledCourse: {
+        id: filter.courseId,
+      },
+      academicSemester: {
+        id: filter.academicSemesterId,
+      },
+    },
+  });
+
+  return result;
+};
 export const StudentService = {
   insertIntoDB,
   getAllFromDB,
@@ -255,4 +286,5 @@ export const StudentService = {
   myCourses,
   getMyCourseSchedule,
   getMyAcademicInfo,
+  getMyCourseMarks,
 };
