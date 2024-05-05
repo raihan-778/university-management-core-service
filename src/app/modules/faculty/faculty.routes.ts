@@ -13,6 +13,11 @@ router.get(
   auth(ENUM_USER_ROLE.FACULTY),
   FacultyController.myCourses
 );
+router.get(
+  '/my-courses-students',
+  auth(ENUM_USER_ROLE.FACULTY),
+  FacultyController.myCoursesStudents
+);
 
 router.get('/:id', FacultyController.getDataById);
 router.delete(

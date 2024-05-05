@@ -9,6 +9,11 @@
             "date": 1714877743585,
             "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\errors\\phu-2024-05-05-08-error.log",
             "hash": "ac283db5f7218e6a8760c79bb692c4d405443fbdd01adfbeaa60f2a76172c9b3"
+        },
+        {
+            "date": 1714878116906,
+            "name": "D:\\Programming-hero\\PhWevDevLevel2\\back-end\\backend-project\\university-management-core-service\\logs\\winston\\errors\\phu-2024-05-05-09-error.log",
+            "hash": "5e3992bbf35d3404d59e55a6db90ff5af9306e7d6be1206fe043a1669af1c611"
         }
     ],
     "hashType": "sha256"

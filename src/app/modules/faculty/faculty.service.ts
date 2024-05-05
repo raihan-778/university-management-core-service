@@ -256,7 +256,7 @@ const myCourseStudents = async (
   authUser: any,
   filter: IFacultyCourseStudentRequest,
   options: IPaginationOptions
-): Promise<Student[]> => {
+): Promise<IGenericResponse<Student[]>> => {
   const { limit, page, skip } = paginationHelpers.calculatePagination(options);
   console.log(authUser);
   if (!filter.academicSemesterId) {
